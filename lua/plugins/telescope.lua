@@ -13,6 +13,7 @@ return {
       require("telescope").setup({
         defaults = {
           cwd = vim.fn.getcwd(), -- Respect the terminal's current working directory
+          file_ignore_patterns = { "src/main/java/org/jooq/.*", "target/.*" },
           mappings = {
             i = {
               -- Remap in insert mode
