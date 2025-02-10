@@ -15,8 +15,8 @@ return {
           "-Declipse.product=org.eclipse.jdt.ls.core.product",
           "-Dlog.protocol=true",
           "-Dlog.level=ALL",
-          "-Xms1g",
-          "-Xmx2G",
+          "-Xms2g",
+          "-Xmx4G",
           "-javaagent:/Users/adambotha/.m2/repository/org/projectlombok/lombok/1.18.32/lombok-1.18.32.jar",
           "-jar",
           "/Users/adambotha/repositories/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar",
@@ -48,6 +48,23 @@ return {
             },
             format = {
               enabled = false,
+            },
+            contentProvider = { preferred = "fernflower" },
+            autobuild = {
+              enabled = false, -- Avoid automatic build triggering
+            },
+            import = {
+              exclusions = {
+                "**/src/main/java/org/jooq/**", -- Exclude large directories
+              },
+            },
+            completion = {
+              favoriteStaticMembers = {
+                "org.junit.Assert.*",
+                "org.mockito.Mockito.*",
+                "org.mockito.ArgumentMatchers.*",
+                "org.mockito.Answers.*",
+              },
             },
           },
         },
