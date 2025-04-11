@@ -44,7 +44,7 @@ return {
               enabled = true,
             },
             references = {
-              includeDecompiledSources = true,
+              includeDecompiledSources = false,
             },
             format = {
               enabled = false,
@@ -55,6 +55,13 @@ return {
             },
             import = {
               exclusions = {
+                "**/node_modules/**",
+                "**/.git/**",
+                "**/.m2/**",
+                "**/target/**",
+                "**/build/**",
+                "**/bin/**",
+                "**/out/**",
                 "**/src/main/java/org/jooq/**", -- Exclude large directories
               },
             },
@@ -75,7 +82,8 @@ return {
       clangd = {
         cmd = { "/opt/homebrew/opt/llvm/bin/clangd" },
         filetypes = { "c", "cpp", "objc", "objcpp" },
-        root_dir = require("lspconfig.util").root_pattern(".git", "."),
+        -- root_dir = require("lspconfig.util").root_pattern(".git", "."),
+        root_dir = require("lspconfig").util.root_pattern("pom.xml", "build.gradle"),
         single_file_support = true,
       },
     },
