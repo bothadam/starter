@@ -1,3 +1,8 @@
+install brew
+install neovim 
+download and install nerdfont
+select nerdfont for iterm2 in the profile -> text section
+
 for some reason you have to install fzf on your machine separately
 
 
