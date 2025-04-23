@@ -12,12 +12,7 @@ keymap("n", "<CR>", "o<Esc>", { desc = "Insert newline below" })
 keymap("n", "<leader><CR>", "O<Esc>", { desc = "Insert newline above" })
 
 -- Center the cursor after half-page scrolling
-keymap('n', "<C-d>", "10jzz", { desc = "Scroll down and center" })
-keymap('n', "<C-u>", "10kzz", { desc = "Scroll up and center" })
+keymap("n", "<C-d>", "10jzz", { desc = "Scroll down and center" })
+keymap("n", "<C-u>", "10kzz", { desc = "Scroll up and center" })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>e",
-  ":Neotree toggle reveal_force_cwd<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<CR>", { noremap = true, silent = true })
