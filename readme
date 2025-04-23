@@ -13,4 +13,5 @@ stuff to do:
 - focus on the currently open file when opening easygit
 - remove auto closing of parenthesis, brackets, etc
 - when doing a search, sort the results alphabetically (and focus on the last one that was focused on )
+- is there a db tool
 
