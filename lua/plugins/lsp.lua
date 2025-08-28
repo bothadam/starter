@@ -17,12 +17,30 @@ return {
         enable_import_completion = true,
         capabilities = capabilities,
         on_attach = function(client)
-          -- 🔧 work-around for the ArgumentOutOfRangeException
           if client.server_capabilities.inlayHintProvider then
             client.server_capabilities.inlayHintProvider = false
           end
         end,
       })
+
+      -------------------------------------------------------------
+      -- 3.  Add tsserver configuration
+      -------------------------------------------------------------
+      opts.servers.tsserver = {
+        capabilities = capabilities,
+        settings = {
+          typescript = {
+            preferences = {
+              importModuleSpecifier = "non-relative",
+            },
+          },
+          javascript = {
+            preferences = {
+              importModuleSpecifier = "non-relative",
+            },
+          },
+        },
+      }
     end,
   },
 }

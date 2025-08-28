@@ -1,16 +1,22 @@
 return {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      filesystem = {
-        filtered_items = {
-          visible = true,          -- Show hidden files by default
-          hide_dotfiles = false,   -- Do not hide dotfiles
-          hide_gitignored = false, -- Do not hide .gitignored files
-          hide_by_name = {},       -- Do not hide specific file names
-        },
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+    -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
+  },
+  lazy = false, -- neo-tree will lazily load itself
+  ---@module "neo-tree"
+  ---@type neotree.Config?
+  opts = {
+    filesystem = {
+      filtered_items = {
+        visible = true, -- Show hidden items by default
+        hide_dotfiles = false, -- Show dotfiles (e.g. .env, .gitignore)
+        hide_gitignored = false, -- Show gitignored files too
       },
     },
   },
 }
-
