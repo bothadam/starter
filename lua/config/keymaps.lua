@@ -16,3 +16,26 @@ keymap("n", "<C-d>", "10jzz", { desc = "Scroll down and center" })
 keymap("n", "<C-u>", "10kzz", { desc = "Scroll up and center" })
 
 vim.api.nvim_set_keymap("n", "<leader>e", ":Neotree toggle reveal_force_cwd<CR>", { noremap = true, silent = true })
+
+-- LSP keymaps (these will be set when LSP attaches to a buffer)
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf, noremap = true, silent = true }
+    
+    -- Go to definition
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    
+    -- Go to implementation
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    
+    -- Show hover documentation
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    
+    -- Find references
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    
+    -- Format document
+    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
+  end,
+})
